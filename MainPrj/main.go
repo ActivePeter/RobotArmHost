@@ -15,6 +15,8 @@ func main() {
 	// enable high dpi scaling
 	// useful for devices with high pixel density displays
 	// such as smartphones, retina displays, ...
+	
+
 	core.QCoreApplication_SetAttribute(core.Qt__AA_EnableHighDpiScaling, true)
 
 	// needs to be called once before you can start using QML/Quick
@@ -23,7 +25,7 @@ func main() {
 	// use the material style
 	// the other inbuild styles are:
 	// Default, Fusion, Imagine, Universal,Material
-	quickcontrols2.QQuickStyle_SetStyle("Fusion")
+	quickcontrols2.QQuickStyle_SetStyle("Material")
 
 	// create the quick view
 	// with a minimum size of 250*200

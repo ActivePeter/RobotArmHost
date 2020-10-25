@@ -10,3 +10,5 @@
 
 编译执行项目的脚本在scripts里面
 
+由于golang版qt编译太慢了。。。暂时使用原版qt进行界面开发，放在nativeQt里
+

@@ -1,33 +1,36 @@
-import QtQuick 2.7			//Item
-import QtQuick.Controls 2.1	//Dialog
+import QtQuick 2.12
+        import QtQuick.Window 2.12
+        import QtQuick.Controls 2.3
 
-Item {
-    id: window
-
-    Column {
+        Window {
+        visible: true
+        width: 640
+        height: 480
+        title: qsTr("Hello World")
+        Column {
         anchors.centerIn: parent
 
         TextField {
-            id: input
-            text: "sss"
-            selectByMouse:true
-            anchors.horizontalCenter: parent.horizontalCenter
-            placeholderText: "Write something ..."
+        id: input
+        text: "sss"
+        selectByMouse:true
+        anchors.horizontalCenter: parent.horizontalCenter
+        placeholderText: "Write something ..."
         }
 
         Button {
-            anchors.horizontalCenter: parent.horizontalCenter
-            text: "and click me!"
-            onClicked: dialog.open()
+        anchors.horizontalCenter: parent.horizontalCenter
+        text: "and click me!"
+        onClicked: dialog.open()
         }
 
         TextArea {
-            id: textArea
-            text: qsTr("Text Area")
+        id: textArea
+        text: qsTr("Text Area")
         }
-    }
+        }
 
-    Dialog {
+        Dialog {
         id: dialog
 
         x: (window.width - width) * 0.5
@@ -38,13 +41,7 @@ Item {
         standardButtons: Dialog.Ok
 
         contentItem: Label {
-            text: input.text
+        text: input.text
         }
-    }
-}
-
-
-/*##^## Designer {
-    D{i:0;autoSize:true;height:480;width:640}
-}
- ##^##*/
+        }
+        }
