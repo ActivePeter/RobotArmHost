@@ -1,0 +1,12 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource>
+<file>qml/calc.qml</file>
+<file>qml/content/Button.qml</file>
+<file>qml/content/calculator.js</file>
+<file>qml/content/Display.qml</file>
+<file>qml/content/images/paper-edge-left.png</file>
+<file>qml/content/images/paper-edge-right.png</file>
+<file>qml/content/images/paper-grip.png</file>
+<file>qml/content/NumberPad.qml</file>
+</qresource>
+</RCC>
