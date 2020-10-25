@@ -2,7 +2,7 @@
 
 采用go+qtquick
 
-基于的是https://github.com/therecipe/qt这个超级多star的大佬项目（golang的qt bind）
+基于的是https://github.com/therecipe/qt 这个超级多star的大佬项目（golang的qt bind）
 
 ### qt版本：5.12.0
 
