@@ -20,20 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5c0144c5-d055-4600-823d-c4f7f5ad2cb9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/NativeQtToDesignQML/NativeQtToDesignQML/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NativeQtToDesignQML/NativeQtToDesignQML/NativeQtToDesignQML.pro" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NativeQtToDesignQML/NativeQtToDesignQML/main.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NativeQtToDesignQML/NativeQtToDesignQML/main.qml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NativeQtToDesignQML/NativeQtToDesignQML/qml.qrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nativeQt/test/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nativeQt/test/main.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nativeQt/test/main.qml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nativeQt/test/qml.qrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nativeQt/test/test.pro" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MainPrj/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/MainPrj/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MainPrj/qml/main.qml" beforeDir="false" afterPath="$PROJECT_DIR$/MainPrj/qml/main.qml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MainPrj/rcc.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MainPrj/rcc.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nativeQt/test/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/nativeQt/test/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +47,7 @@
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="last_opened_file_path" value="$USER_HOME$" />
+    <property name="settings.editor.selected.configurable" value="com.zxy.ijplugin.wechat_miniprogram.settings.MyProjectConfigurable" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">
@@ -71,5 +63,11 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="418" y="332" key="SettingsEditor" timestamp="1603650437591">
+      <screen x="0" y="30" width="2194" height="1204" />
+    </state>
+    <state x="418" y="332" key="SettingsEditor/0.30.2194.1204@0.30.2194.1204" timestamp="1603650437591" />
   </component>
 </project>

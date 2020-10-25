@@ -8,6 +8,7 @@ import (
 
 	"github.com/therecipe/qt/quickcontrols2"
 	"github.com/therecipe/qt/widgets"
+	"github.com/therecipe/qt/gui"
 )
 
 func main() {
@@ -15,23 +16,26 @@ func main() {
 	// enable high dpi scaling
 	// useful for devices with high pixel density displays
 	// such as smartphones, retina displays, ...
-	
+
 
 	core.QCoreApplication_SetAttribute(core.Qt__AA_EnableHighDpiScaling, true)
 
 	// needs to be called once before you can start using QML/Quick
 	widgets.NewQApplication(len(os.Args), os.Args)
-
+	widgets.QApplication_SetFont(gui.NewQFont2("Microsoft JhengHei",12,1,false),"")
 	// use the material style
 	// the other inbuild styles are:
 	// Default, Fusion, Imagine, Universal,Material
 	quickcontrols2.QQuickStyle_SetStyle("Material")
+
+
 
 	// create the quick view
 	// with a minimum size of 250*200
 	// set the window title to "Hello QML/Quick Example"
 	// and let the root item of the view resize itself to the size of the view automatically
 	view := quick.NewQQuickView(nil)
+
 	view.SetMinimumSize(core.NewQSize2(250, 200))
 	view.SetResizeMode(quick.QQuickView__SizeRootObjectToView)
 	view.SetTitle("Hello QML/Quick Example")
