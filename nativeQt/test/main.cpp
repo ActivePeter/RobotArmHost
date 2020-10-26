@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
 //    QQmlApplicationEngine engine;
 
     QQuickStyle::setStyle("Material");
-    QFont f("Microsoft JhengHei",12);
+    QFont f("Microsoft JhengHei",10);
     app.setFont(f);
     QQuickView *view = new QQuickView;
     view->setResizeMode(QQuickView::SizeRootObjectToView);
