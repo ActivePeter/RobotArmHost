@@ -21,9 +21,6 @@
   <component name="ChangeListManager">
     <list default="true" id="5c0144c5-d055-4600-823d-c4f7f5ad2cb9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MainPrj/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/MainPrj/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MainPrj/qml/main.qml" beforeDir="false" afterPath="$PROJECT_DIR$/MainPrj/qml/main.qml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MainPrj/rcc.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MainPrj/rcc.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nativeQt/test/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/nativeQt/test/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
