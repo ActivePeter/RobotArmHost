@@ -5,6 +5,4 @@ SET QT_VERSION=5.12.0
 
 SET GOARCH=amd64
 
-qtdeploy test desktop ./
-
-@REM .\deploy\windows\MainPrj.exejjjjj
+qtdeploy -fast build desktop ./

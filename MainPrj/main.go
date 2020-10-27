@@ -1,14 +1,13 @@
 package main
 
 import (
+	"github.com/therecipe/qt/gui"
 	"os"
 
 	"github.com/therecipe/qt/core"
 	"github.com/therecipe/qt/quick"
 
-	"github.com/therecipe/qt/quickcontrols2"
 	"github.com/therecipe/qt/widgets"
-	"github.com/therecipe/qt/gui"
 )
 
 func main() {
@@ -22,14 +21,16 @@ func main() {
 
 	// needs to be called once before you can start using QML/Quick
 	widgets.NewQApplication(len(os.Args), os.Args)
-	widgets.QApplication_SetFont(gui.NewQFont2("Microsoft JhengHei",12,1,false),"")
+
+	//widgets..SetFont(gui.NewQFont2("Microsoft JhengHei",10,1,false),"")
 	// use the material style
 	// the other inbuild styles are:
 	// Default, Fusion, Imagine, Universal,Material
-	quickcontrols2.QQuickStyle_SetStyle("Material")
+	//quickcontrols2.QQuickStyle_SetStyle("Material")
 
 
-
+	widgets.QApplication_SetFont(gui.NewQFont2("Microsoft JhengHei",10,1,false),"")
+	//widgets.fo
 	// create the quick view
 	// with a minimum size of 250*200
 	// set the window title to "Hello QML/Quick Example"
