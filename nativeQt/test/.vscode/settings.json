@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "qquickpainteditem": "cpp",
+        "vector": "cpp"
+    }
+}

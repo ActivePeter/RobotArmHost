@@ -2,6 +2,8 @@ import QtQuick 2.12
 import QtQuick.Window 2.12
 import QtQuick.Controls 2.3
 import QtQuick.Dialogs 1.2
+import PathPainter 1.0
+
 Window {
     id:window
     visible: true
@@ -27,6 +29,10 @@ Window {
                 width: 380
                 height: 245
                 title: qsTr("路径预览")
+                PathPainter{
+                    contentsScale: 1
+                    anchors.fill: parent
+                }
             }
 
             Pane {
@@ -176,8 +182,4 @@ Window {
 
 
 
-/*##^## Designer {
-    D{i:42;anchors_height:109;anchors_width:229;anchors_x:"-12";anchors_y:23}D{i:13;anchors_height:400;anchors_width:200;anchors_x:208;anchors_y:25}
-D{i:28;anchors_height:200;anchors_width:640}
-}
- ##^##*/
+

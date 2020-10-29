@@ -53,7 +53,7 @@ func calcSectionCnt() int32{
 func calcPointSliceLen() int32{
 	return calcSectionCnt()+1
 }
-func initPointSlice(){
+func RecalcPointSlice(){
 	trackPointSliceLen:=calcPointSliceLen()
 	trackPointSlice=make([]armStatePoint, trackPointSliceLen)
 
@@ -65,11 +65,23 @@ func initPointSlice(){
 	for{
 		var curXLen float32 =minSectionXLen + armDesc.penWidth*float32(curStepCnt1)
 		curSectionCnt:=int32(curXLen/minSectionXLen)
-		if curStepCnt1%2==0 {//偶数正向
-
-		}else{//奇数反向
-
+		var j int32=0
+		var (
+			px float32
+			py float32
+		)
+		for ;j<curSectionCnt+1;j++{
+			py=float32(j)*curXLen/float32(curSectionCnt)
+			px=curXLen-py
+			if curStepCnt1%2==0 {//偶数正向
+				trackPointSlice[j].position.x=armDesc.armOriginalPointX+ px//这里坐标换算还得修改。
+				trackPointSlice[j].position.y=armDesc.armOriginalPointY- py
+			}else{//奇数反向
+				trackPointSlice[j].position.x=armDesc.armOriginalPointX+ py
+				trackPointSlice[j].position.y=armDesc.armOriginalPointY - px
+			}
 		}
+
 		//curXstep+=armDesc.penWidth
 		curStepCnt1++
 		if curXLen > armDesc.paperWidth{
