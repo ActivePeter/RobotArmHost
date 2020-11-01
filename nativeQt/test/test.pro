@@ -16,7 +16,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
     PathPainter/PathPainter.cpp \
-    PathBuilder/PathBuilder.cpp
+    PathBuilder/PathBuilder.cpp \
+    pa_CommonLibOnOS/DataConv/ImgConv/ImgConv.cpp \
+    pa_CommonLibOnOS/DataConv/StrConv/StrConv.cpp
 
 RESOURCES += qml.qrc
 
@@ -33,4 +35,26 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     PathPainter/PathPainter.h \
-    PathBuilder/PathBuilder.h
+    PathBuilder/PathBuilder.h \
+    pa_CommonLibOnOS/DataConv/ImgConv/ImgConv.h \
+    pa_CommonLibOnOS/DataConv/StrConv/StrConv.h
+
+#INCLUDEPATH +=C:\opencv450mingw\build\install\include
+#LIBS += C:\opencv450mingw\build\install\x64\mingw\lib\libopencv_*.a
+
+
+#LIBS += C:/opencv450mingw/build/install/x64/mingw/bin/libopencv_core*.dll
+
+
+#INCLUDEPATH += C:/opencv450mingw/build/install/include
+#DEPENDPATH += C:/opencv450mingw/build/install/include
+
+
+
+unix|win32: LIBS += -LC:/opencv450mingw/build/install/x64/mingw/lib/ -llibopencv_core450.dll
+unix|win32: LIBS += -LC:/opencv450mingw/build/install/x64/mingw/lib/ -llibopencv_highgui450.dll
+unix|win32: LIBS += -LC:/opencv450mingw/build/install/x64/mingw/lib/ -llibopencv_imgcodecs450.dll
+unix|win32: LIBS += -LC:/opencv450mingw/build/install/x64/mingw/lib/ -llibopencv_imgproc450.dll
+
+INCLUDEPATH += C:/opencv450mingw/build/install/include
+DEPENDPATH += C:/opencv450mingw/build/install/include

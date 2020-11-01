@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
     view->setResizeMode(QQuickView::SizeRootObjectToView);
     view->setMinimumSize(QSize(250, 200));
     view->setSource(QUrl(QStringLiteral("qrc:/main.qml")));
-    view->show();
+    // view->show();
     //    engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
     //    if (engine.rootObjects().isEmpty())
     //        return -1;

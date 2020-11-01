@@ -29,10 +29,6 @@ Window {
                 width: 380
                 height: 245
                 title: qsTr("路径预览")
-                PathPainter{
-                    contentsScale: 1
-                    anchors.fill: parent
-                }
             }
 
             Pane {
@@ -69,6 +65,7 @@ Window {
 
                     text: qsTr("导入图片..")
                     onClicked: {
+                        // pathPainter.recalcPath();
                         fds.open();
                     }
                 }
@@ -106,6 +103,14 @@ Window {
         anchors.leftMargin: 10
         title: qsTr("下位机信息")
     }
+    PathPainter{
+        id:pathPainter
+        x: 10
+        y: 10
+        contentsScale: 1
+        anchors.fill: parent
+    }
+
     FileDialog {
         id:fds
         title: "选择文件"
@@ -115,8 +120,10 @@ Window {
         selectMultiple: false
         nameFilters: ["图像文件(*.gif;*.jpg;*.jpeg;*.png;)"]
         onAccepted: {
+
             //            labels.text = fds.fileUrl;
             console.log("You chose: " + fds.fileUrl);
+            pathPainter.transmitImagePath(fds.fileUrl)
             viewImage.source=fds.fileUrl
             viewImage.visible=true
             button.anchors.verticalCenter=undefined
@@ -128,6 +135,7 @@ Window {
         }
 
     }
+
 }
 
 
