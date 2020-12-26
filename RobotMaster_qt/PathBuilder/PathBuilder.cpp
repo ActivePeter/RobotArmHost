@@ -167,10 +167,10 @@ int PathBuilder::getLineGrayLevel(float x1, float y1, float x2, float y2, cv::Ma
 
 bool PathBuilder::getPutdownByGrayLevel(int graylevel, int stepLevel)
 {
-    int resolution = 4;
+    int resolution = 8;
     stepLevel %= resolution;                  //0-3
     graylevel = graylevel * resolution / 255; //0-4
-
+    graylevel = resolution - graylevel;
     return stepLevel < graylevel;
 }
 

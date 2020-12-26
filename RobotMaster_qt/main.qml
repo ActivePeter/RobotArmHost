@@ -102,6 +102,25 @@ Window {
         anchors.left: parent.left
         anchors.leftMargin: 10
         title: qsTr("下位机信息")
+
+        Text {
+            id: element
+            x: 6
+            y: 8
+            width: 48
+            height: 16
+            text: qsTr("未检测到")
+            font.pixelSize: 12
+        }
+
+        Button {
+            id: button1
+            x: 66
+            y: -5
+            width: 56
+            height: 42
+            text: qsTr("链接")
+        }
     }
     PathPainter{
         id:pathPainter
