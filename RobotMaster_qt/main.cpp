@@ -5,13 +5,19 @@
 #include <QFont>
 #include "PathPainter/PathPainter.h"
 
+void registQmlCommunicator()
+{
+    qmlRegisterType<PathPainter>("PathPainter", 1, 0, "PathPainter");
+    qmlRegisterType<PathPainter>("PathPainter", 1, 0, "PathPainter");
+}
+
 int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
     QGuiApplication app(argc, argv);
 
-    qmlRegisterType<PathPainter>("PathPainter", 1, 0, "PathPainter");
+    registQmlCommunicator();
     //    QQmlApplicationEngine engine;
 
     QQuickStyle::setStyle("Material");

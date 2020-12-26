@@ -2,16 +2,17 @@
 #define __SERIALMANAGER_H__
 #include "QSerialPort"     //串口访问
 #include "QSerialPortInfo" //串口端口信息访问
+#include "QmlCommunicator/QmlCom_SerialPart/QmlCom_SerialPart.h"
 class SerialManager
 {
 public:
     void init();
     static SerialManager instance;
-
+    
 private:
     QSerialPort qSerialPort;
     QString portName;
-    bool deviceFound=false;
+    bool deviceFound = false;
     void lookForDevice();
     void onDeviceFound(const QString &portName);
 };
