@@ -3,12 +3,14 @@
 #include "opencv2/opencv.hpp"
 #include "pa_CommonLibOnOS/DataConv/ImgConv/ImgConv.h"
 #include "pa_CommonLibOnOS/DataConv/StrConv/StrConv.h"
+#include "SerialManager/SerialManager.h"
 using namespace cv;
 
 PathPainter::PathPainter(QQuickItem *parent)
     : QQuickPaintedItem(parent)
 {
     pathBuilder.init();
+    SerialManager::instance.init();
 }
 
 // Q_INVOKABLE void PathPainter::recalcPath()

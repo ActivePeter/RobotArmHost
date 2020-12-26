@@ -1,22 +1,19 @@
 #ifndef __SERIALMANAGER_H__
 #define __SERIALMANAGER_H__
-
+#include "QSerialPort"     //串口访问
+#include "QSerialPortInfo" //串口端口信息访问
 class SerialManager
 {
 public:
-    static void init();
-    static PathBuilder *instance;
-    void recalcPointVector(cv::Mat &mat);
-    vector<PathPointStruct> pathPointsVector;
-    ArmDescription armDesc;
+    void init();
+    static SerialManager instance;
 
 private:
-    const double sqrt2 = 1.4142135623731;
-    int calcPointVectorLen();
-    void convertPosFromLeftUpToArmPos(float &x, float &y);
-    int getLineGrayLevel(float x1, float y1, float x2, float y2, cv::Mat &mat);
-    bool getPutdownByGrayLevel(int graylevel, int stepLevel);
-    void convPaperPos2MatPos(float &x1, float &y1, float &x2, float &y2, cv::Mat &mat);
+    QSerialPort qSerialPort;
+    QString portName;
+    bool deviceFound=false;
+    void lookForDevice();
+    void onDeviceFound(const QString &portName);
 };
 
 #endif // __SERIALMANAGER_H__

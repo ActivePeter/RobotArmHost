@@ -1,5 +1,6 @@
 QT += quick\
- quickcontrols2
+ quickcontrols2\
+ serialport
 CONFIG += c++11
 
 # The following define makes your compiler emit warnings if you use
@@ -18,8 +19,9 @@ SOURCES += \
     PathPainter/PathPainter.cpp \
     PathBuilder/PathBuilder.cpp \
     pa_CommonLibOnOS/DataConv/ImgConv/ImgConv.cpp \
-    pa_CommonLibOnOS/DataConv/StrConv/StrConv.cpp
-
+    pa_CommonLibOnOS/DataConv/StrConv/StrConv.cpp \
+    QmlCommunicator/QmlCom_SerialPart/QmlCom_SerialPart.cpp \
+    SerialManager/SerialManager.cpp
 RESOURCES += qml.qrc
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
@@ -37,7 +39,13 @@ HEADERS += \
     PathPainter/PathPainter.h \
     PathBuilder/PathBuilder.h \
     pa_CommonLibOnOS/DataConv/ImgConv/ImgConv.h \
-    pa_CommonLibOnOS/DataConv/StrConv/StrConv.h
+    pa_CommonLibOnOS/DataConv/StrConv/StrConv.h \
+    pa_CommonLibOnOS/DataConv/ImgConv/ImgConv.h \
+    pa_CommonLibOnOS/DataConv/StrConv/StrConv.h \
+    PathBuilder/PathBuilder.h \
+    PathPainter/PathPainter.h \
+    QmlCommunicator/QmlCom_SerialPart/QmlCom_SerialPart.h \
+    SerialManager/SerialManager.h
 
 #INCLUDEPATH +=C:\opencv450mingw\build\install\include
 #LIBS += C:\opencv450mingw\build\install\x64\mingw\lib\libopencv_*.a

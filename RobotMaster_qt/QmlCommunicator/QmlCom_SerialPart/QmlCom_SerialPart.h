@@ -1,0 +1,4 @@
+#ifndef __QMLCOM_SERIALPART_H__
+#define __QMLCOM_SERIALPART_H__
+
+#endif // __QMLCOM_SERIALPART_H__
