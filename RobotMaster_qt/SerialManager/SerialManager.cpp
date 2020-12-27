@@ -82,6 +82,29 @@ void SerialManager::disconnectDevice()
     slaveState = SlaveState::FoundAndNotConnect;
 }
 
+void SerialManager::switchMotor(bool state)
+{
+    char buff[20];
+    if (state)
+    {
+        buff[0] = 0x21;
+    }
+    else
+    {
+        buff[0] = 0x22;
+    }
+
+    writeData(buff, 1);
+}
+
+qint64 SerialManager::writeData(const char *data, qint64 len)
+{
+    if (slaveState == SlaveState::FoundAndConnect)
+    {
+        qSerialPort->write(data, len);
+    }
+}
+
 void SerialManager::onError(QSerialPort::SerialPortError serialPortError)
 {
     switch (serialPortError)
@@ -104,16 +127,3 @@ void SerialManager::onError(QSerialPort::SerialPortError serialPortError)
     // qSerialPort->close();
     // lookForDevice();
 }
-
-void SerialManager::onError()
-{
-}
-
-// void SerialManager::onDisconnect()
-// {
-
-// }
-
-// SerialManager::SerialManager(QObject *parent)
-// {
-// }

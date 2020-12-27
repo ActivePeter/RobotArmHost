@@ -12,6 +12,7 @@ public:
     static QmlCom_SerialPart *instance;
     Q_INVOKABLE void initSerial();
     Q_INVOKABLE void onClick_ConnectBtn();
+    Q_INVOKABLE void onClick_Switch(bool checked);
     // Q_INVOKABLE float getAttitudes(int id, int index);
     // Q_INVOKABLE
     // static QmlCppInterface *instance;
@@ -28,6 +29,5 @@ public slots:
 
 private:
 };
-
 
 #endif // __QMLCOM_SERIALPART_H__

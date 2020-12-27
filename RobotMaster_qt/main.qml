@@ -14,7 +14,25 @@ Window {
     minimumHeight:height
     maximumHeight:height
     title: qsTr("Hello World")
-
+    function convToConnected()
+    {
+        serialFoundStateText.text=qsTr("已链接到从机");
+        connectSlaveBtn.text=qsTr("断开");
+        connectSlaveBtn.enabled=true;
+        motorSwitch.enabled=true;
+    }
+    function convToDisonnected(){
+        serialFoundStateText.text=qsTr("已检测到从机");
+        connectSlaveBtn.text=qsTr("链接");
+        connectSlaveBtn.enabled=true;
+        motorSwitch.enabled=false;
+    }
+    function convToUnfound(){
+        serialFoundStateText.text=qsTr("未检测到");
+        connectSlaveBtn.text=qsTr("重新扫描");
+        connectSlaveBtn.enabled=true;
+        motorSwitch.enabled=true;
+    }
     Column {
         id: column
         anchors.fill: parent
@@ -135,6 +153,23 @@ Window {
                 }
             }
         }
+
+        Switch {
+            id: motorSwitch
+            x: 492
+            y: 119
+            enabled: false
+            text: qsTr("开启")
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 3
+            anchors.right: parent.right
+            anchors.rightMargin: 3
+            transformOrigin: Item.Center
+            onClicked: {
+                console.log("switch motor "+checked)
+                serialPart.onClick_Switch(checked)
+            }
+        }
     }
     PathPainter{
         id:pathPainter
@@ -148,25 +183,17 @@ Window {
         onConnectionStateChange:{
             console.log("qml onConnectionStateChange"+connected);
             if(connected){
-                serialFoundStateText.text=qsTr("已链接到从机");
-                connectSlaveBtn.text=qsTr("断开");
-                connectSlaveBtn.enabled=true;
+                convToConnected()
             }else{
-                serialFoundStateText.text=qsTr("已检测到从机");
-                connectSlaveBtn.text=qsTr("链接");
-                connectSlaveBtn.enabled=true;
+                convToDisonnected()
             }
         }
         onScanStateChange:{
             console.log("qml onScanStateChange"+found);
             if(found){
-                serialFoundStateText.text=qsTr("已检测到从机");
-                connectSlaveBtn.text=qsTr("链接");
-                connectSlaveBtn.enabled=true;
+                convToDisonnected()
             }else{
-                serialFoundStateText.text=qsTr("未检测到");
-                connectSlaveBtn.text=qsTr("重新扫描");
-                connectSlaveBtn.enabled=true;
+                convToUnfound()
             }
         }
     }

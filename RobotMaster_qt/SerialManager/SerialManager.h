@@ -21,8 +21,10 @@ public:
     void lookForDevice();
     void connectDevice();
     void disconnectDevice();
+    void switchMotor(bool state);
 
 private:
+    qint64 writeData(const char *data, qint64 len);
     QSerialPort *qSerialPort;
     void onDeviceFound(const QString &portName);
     SlaveState slaveState;
@@ -31,7 +33,6 @@ private:
     // void onError();
 public slots:
     void onError(QSerialPort::SerialPortError serialPortError);
-    void onError();
 };
 
 #endif // __SERIALMANAGER_H__
