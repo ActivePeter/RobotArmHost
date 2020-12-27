@@ -6,15 +6,28 @@
 class SerialManager
 {
 public:
+    enum SlaveState
+    {
+        NotFound,
+        FoundAndNotConnect,
+        FoundAndConnect
+    };
     void init();
     static SerialManager instance;
+    void setSlaveState(SlaveState slaveState);
+    SlaveState getSlaveState();
+    void lookForDevice();
+    void connectDevice();
+    void disconnectDevice();
 
 private:
     QSerialPort qSerialPort;
-    QString portName;
-    bool deviceFound = false;
-    void lookForDevice();
+    // QString portName;
+    // bool deviceFound = false;
+
     void onDeviceFound(const QString &portName);
+
+    SlaveState slaveState;
 };
 
 #endif // __SERIALMANAGER_H__

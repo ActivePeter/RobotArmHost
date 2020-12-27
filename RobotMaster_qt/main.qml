@@ -103,23 +103,37 @@ Window {
         anchors.leftMargin: 10
         title: qsTr("下位机信息")
 
-        Text {
+        Flow {
             id: element
-            x: 6
-            y: 8
-            width: 48
-            height: 16
-            text: qsTr("未检测到")
-            font.pixelSize: 12
-        }
+            x: 0
+            y: -8
+            width: 412
+            height: 49
+            spacing: 10
 
-        Button {
-            id: button1
-            x: 66
-            y: -5
-            width: 56
-            height: 42
-            text: qsTr("链接")
+            Text {
+                id: serialFoundStateText
+                width: contentWidth+10
+                height: 42
+                text: qsTr("未检测到")
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                font.pixelSize: 12
+            }
+
+            Button {
+                id: connectSlaveBtn
+                width:text.contentWidth+10
+                height: 42
+                text: qsTr("重新扫描")
+                //            flat: true
+                onClicked: {
+                    enabled=false;
+                    text=qsTr("正在链接")
+                    serialPart.onClick_ConnectBtn();
+
+                }
+            }
         }
     }
     PathPainter{
@@ -133,9 +147,17 @@ Window {
         id:serialPart
         onConnectionStateChange:{
             console.log("qml onConnectionStateChange"+connected);
+
         }
         onScanStateChange:{
             console.log("qml onScanStateChange"+found);
+            if(found){
+                serialFoundStateText.text=qsTr("已检测到从机");
+                connectSlaveBtn.text=qsTr("链接");
+            }else{
+                serialFoundStateText.text=qsTr("未检测到");
+                connectSlaveBtn.text=qsTr("重新扫描");
+            }
         }
     }
     FileDialog {

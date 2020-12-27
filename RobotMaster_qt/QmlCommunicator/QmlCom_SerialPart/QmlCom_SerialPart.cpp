@@ -11,6 +11,23 @@ Q_INVOKABLE void QmlCom_SerialPart::initSerial()
     SerialManager::instance.init();
 }
 
+Q_INVOKABLE void QmlCom_SerialPart::onClick_ConnectBtn()
+{
+    switch (SerialManager::instance.getSlaveState())
+    {
+    case SerialManager::NotFound:
+        SerialManager::instance.lookForDevice();
+        break;
+
+    case SerialManager::FoundAndConnect:
+        SerialManager::instance.disconnectDevice();
+        break;
+    case SerialManager::FoundAndNotConnect:
+        SerialManager::instance.connectDevice();
+        break;
+    }
+}
+
 void QmlCom_SerialPart::emit_connectionStateChange(bool connected)
 {
     emit connectionStateChange(connected);

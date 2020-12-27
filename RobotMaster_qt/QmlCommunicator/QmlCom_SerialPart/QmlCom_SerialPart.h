@@ -11,6 +11,7 @@ public:
     explicit QmlCom_SerialPart(QObject *parent = 0);
     static QmlCom_SerialPart *instance;
     Q_INVOKABLE void initSerial();
+    Q_INVOKABLE void onClick_ConnectBtn();
     // Q_INVOKABLE float getAttitudes(int id, int index);
     // Q_INVOKABLE
     // static QmlCppInterface *instance;
