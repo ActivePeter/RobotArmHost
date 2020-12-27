@@ -1,7 +1,8 @@
 #include <QDebug>
 #include "SerialManager.h"
 #include "pa_CommonLibOnOS/DataConv/DataConv.h"
-#
+#include "QmlCommunicator/QmlCom_SerialPart/QmlCom_SerialPart.h"
+
 SerialManager SerialManager::instance;
 
 void SerialManager::init()
@@ -23,12 +24,10 @@ void SerialManager::lookForDevice()
             break;
         }
     }
+    QmlCom_SerialPart::instance->emit_scanStateChange(deviceFound);
 }
 void SerialManager::onDeviceFound(const QString &portName)
 {
     qDebug() << ("deviceFound:") << portName << ("\r\n");
     deviceFound = true;
-
 }
-
-

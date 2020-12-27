@@ -1,0 +1,1 @@
+#include "QmlCom_SerialPart/QmlCom_SerialPart.h"

@@ -4,13 +4,6 @@
 #include <QQuickView>
 #include <QFont>
 #include "PathPainter/PathPainter.h"
-#include "QmlCommunicator/QmlCommunicator.h"
-
-void registQmlCommunicator()
-{
-    qmlRegisterType<PathPainter>("QmlCommunicator", 1, 0, "PathPainter");
-    qmlRegisterType<QmlCom_SerialPart>("QmlCommunicator", 1, 0, "SerialPart");
-}
 
 int main(int argc, char *argv[])
 {
@@ -18,7 +11,7 @@ int main(int argc, char *argv[])
 
     QGuiApplication app(argc, argv);
 
-    registQmlCommunicator();
+    qmlRegisterType<PathPainter>("PathPainter", 1, 0, "PathPainter");
     //    QQmlApplicationEngine engine;
 
     QQuickStyle::setStyle("Material");

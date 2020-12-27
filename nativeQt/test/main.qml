@@ -2,7 +2,7 @@ import QtQuick 2.12
 import QtQuick.Window 2.12
 import QtQuick.Controls 2.3
 import QtQuick.Dialogs 1.2
-import QmlCommunicator 1.0
+import PathPainter 1.0
 
 Window {
     id:window
@@ -102,25 +102,6 @@ Window {
         anchors.left: parent.left
         anchors.leftMargin: 10
         title: qsTr("下位机信息")
-
-        Text {
-            id: element
-            x: 6
-            y: 8
-            width: 48
-            height: 16
-            text: qsTr("未检测到")
-            font.pixelSize: 12
-        }
-
-        Button {
-            id: button1
-            x: 66
-            y: -5
-            width: 56
-            height: 42
-            text: qsTr("链接")
-        }
     }
     PathPainter{
         id:pathPainter
@@ -129,15 +110,7 @@ Window {
         contentsScale: 1
         anchors.fill: parent
     }
-    SerialPart{
-        id:serialPart
-        onConnectionStateChange:{
-            console.log("qml onConnectionStateChange"+connected);
-        }
-        onScanStateChange:{
-            console.log("qml onScanStateChange"+found);
-        }
-    }
+
     FileDialog {
         id:fds
         title: "选择文件"
@@ -161,10 +134,6 @@ Window {
         onRejected: {
         }
 
-    }
-    Component.onCompleted: {
-        //关联信号与信号处理函数的方式同QML中的类型
-        serialPart.initSerial();
     }
 
 }

@@ -1,6 +1,5 @@
 QT += quick\
- quickcontrols2\
- serialport
+ quickcontrols2
 CONFIG += c++11
 
 # The following define makes your compiler emit warnings if you use
@@ -15,13 +14,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    pa_CommonLibOnOS/DataConv/ImgConv/ImgConv.cpp \
-    pa_CommonLibOnOS/DataConv/StrConv/StrConv.cpp \
-    PathBuilder/PathBuilder.cpp \
+        main.cpp \
     PathPainter/PathPainter.cpp \
-    QmlCommunicator/QmlCom_SerialPart/QmlCom_SerialPart.cpp \
-    SerialManager/SerialManager.cpp \
-    main.cpp
+    PathBuilder/PathBuilder.cpp \
+    pa_CommonLibOnOS/DataConv/ImgConv/ImgConv.cpp \
+    pa_CommonLibOnOS/DataConv/StrConv/StrConv.cpp
+
 RESOURCES += qml.qrc
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
@@ -39,43 +37,7 @@ HEADERS += \
     PathPainter/PathPainter.h \
     PathBuilder/PathBuilder.h \
     pa_CommonLibOnOS/DataConv/ImgConv/ImgConv.h \
-    pa_CommonLibOnOS/DataConv/StrConv/StrConv.h \
-    pa_CommonLibOnOS/DataConv/ImgConv/ImgConv.h \
-    pa_CommonLibOnOS/DataConv/StrConv/StrConv.h \
-    PathBuilder/PathBuilder.h \
-    PathPainter/PathPainter.h \
-    QmlCommunicator/QmlCom_SerialPart/QmlCom_SerialPart.h \
-    SerialManager/SerialManager.h \
-    pa_CommonLibOnOS/DataConv/ImgConv/ImgConv.h \
-    pa_CommonLibOnOS/DataConv/StrConv/StrConv.h \
-    pa_CommonLibOnOS/DataConv/DataConv.h \
-    PathBuilder/PathBuilder.h \
-    PathPainter/PathPainter.h \
-    QmlCommunicator/QmlCom_SerialPart/QmlCom_SerialPart.h \
-    QmlCommunicator/QmlCommunicator.h \
-    SerialManager/SerialManager.h \
-    pa_CommonLibOnOS/DataConv/ImgConv/ImgConv.h \
-    pa_CommonLibOnOS/DataConv/StrConv/StrConv.h \
-    pa_CommonLibOnOS/DataConv/DataConv.h \
-    PathBuilder/PathBuilder.h \
-    PathPainter/PathPainter.h \
-    SerialManager/SerialManager.h \
-    pa_CommonLibOnOS/DataConv/ImgConv/ImgConv.h \
-    pa_CommonLibOnOS/DataConv/StrConv/StrConv.h \
-    pa_CommonLibOnOS/DataConv/DataConv.h \
-    PathBuilder/PathBuilder.h \
-    PathPainter/PathPainter.h \
-    QmlCommunicator/QmlCom_SerialPart/QmlCom_SerialPart.h \
-    QmlCommunicator/QmlCommunicator.h \
-    SerialManager/SerialManager.h \
-    pa_CommonLibOnOS/DataConv/ImgConv/ImgConv.h \
-    pa_CommonLibOnOS/DataConv/StrConv/StrConv.h \
-    pa_CommonLibOnOS/DataConv/DataConv.h \
-    PathBuilder/PathBuilder.h \
-    PathPainter/PathPainter.h \
-    QmlCommunicator/QmlCom_SerialPart/QmlCom_SerialPart.h \
-    QmlCommunicator/QmlCommunicator.h \
-    SerialManager/SerialManager.h
+    pa_CommonLibOnOS/DataConv/StrConv/StrConv.h
 
 #INCLUDEPATH +=C:\opencv450mingw\build\install\include
 #LIBS += C:\opencv450mingw\build\install\x64\mingw\lib\libopencv_*.a
