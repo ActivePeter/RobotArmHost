@@ -36,33 +36,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
-    PathPainter/PathPainter.h \
-    PathBuilder/PathBuilder.h \
-    pa_CommonLibOnOS/DataConv/ImgConv/ImgConv.h \
-    pa_CommonLibOnOS/DataConv/StrConv/StrConv.h \
-    pa_CommonLibOnOS/DataConv/ImgConv/ImgConv.h \
-    pa_CommonLibOnOS/DataConv/StrConv/StrConv.h \
-    PathBuilder/PathBuilder.h \
-    PathPainter/PathPainter.h \
-    QmlCommunicator/QmlCom_SerialPart/QmlCom_SerialPart.h \
-    SerialManager/SerialManager.h \
-    pa_CommonLibOnOS/DataConv/ImgConv/ImgConv.h \
-    pa_CommonLibOnOS/DataConv/StrConv/StrConv.h \
-    pa_CommonLibOnOS/DataConv/DataConv.h \
-    PathBuilder/PathBuilder.h \
-    PathPainter/PathPainter.h \
-    QmlCommunicator/QmlCom_SerialPart/QmlCom_SerialPart.h \
-    QmlCommunicator/QmlCommunicator.h \
-    SerialManager/SerialManager.h \
-    pa_CommonLibOnOS/DataConv/ImgConv/ImgConv.h \
-    pa_CommonLibOnOS/DataConv/StrConv/StrConv.h \
-    pa_CommonLibOnOS/DataConv/DataConv.h \
-    PathBuilder/PathBuilder.h \
-    PathPainter/PathPainter.h \
-    SerialManager/SerialManager.h \
-    pa_CommonLibOnOS/DataConv/ImgConv/ImgConv.h \
-    pa_CommonLibOnOS/DataConv/StrConv/StrConv.h \
-    pa_CommonLibOnOS/DataConv/DataConv.h \
     PathBuilder/PathBuilder.h \
     PathPainter/PathPainter.h \
     QmlCommunicator/QmlCom_SerialPart/QmlCom_SerialPart.h \

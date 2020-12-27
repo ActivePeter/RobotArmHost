@@ -147,16 +147,26 @@ Window {
         id:serialPart
         onConnectionStateChange:{
             console.log("qml onConnectionStateChange"+connected);
-
+            if(connected){
+                serialFoundStateText.text=qsTr("已链接到从机");
+                connectSlaveBtn.text=qsTr("断开");
+                connectSlaveBtn.enabled=true;
+            }else{
+                serialFoundStateText.text=qsTr("已检测到从机");
+                connectSlaveBtn.text=qsTr("链接");
+                connectSlaveBtn.enabled=true;
+            }
         }
         onScanStateChange:{
             console.log("qml onScanStateChange"+found);
             if(found){
                 serialFoundStateText.text=qsTr("已检测到从机");
                 connectSlaveBtn.text=qsTr("链接");
+                connectSlaveBtn.enabled=true;
             }else{
                 serialFoundStateText.text=qsTr("未检测到");
                 connectSlaveBtn.text=qsTr("重新扫描");
+                connectSlaveBtn.enabled=true;
             }
         }
     }
