@@ -4,7 +4,7 @@
 #include "pa_CommonLibOnOS/DataConv/DataConv.h"
 #include "QmlCommunicator/QmlCom_SerialPart/QmlCom_SerialPart.h"
 #include "PathBuilder/PathBuilder.h"
-
+#include "qmath.h"
 SerialManager SerialManager::instance;
 
 void SerialManager::init()
@@ -142,7 +142,9 @@ void SerialManager::switchMotor(bool state)
 //     } structForm;
 //     char charArrForm[61];
 // } PointSetCmd;
-
+#ifndef PI
+#define PI (3.1415926535898)
+#endif
 void SerialManager::sendNextPointSet()
 {
     // PointSetCmd psc;
@@ -155,12 +157,26 @@ void SerialManager::sendNextPointSet()
     point_p = (PathPointStruct3D(*)[5])(buff + 1);
     // PathPointStruct3D **pointArr = (PathPointStruct3D **)(buff + 1);
     // // PathPointStruct3D point3DArr[5];
-    for (int i = 0; i < 5; i++)
     {
-        (*point_p)[i].x = i;
-        (*point_p)[i].y = i;
-        (*point_p)[i].z = i;
+        // static char curStarPoint = 0;
+
+        // float x2 = 200 + r * cosf(angle2);
+        // float y2 = 0 + r * sinf(angle2);
+        for (int i = 0; i < 5; i++)
+        {
+
+            // static char lineStep = 0;
+            float angle = (int)i * 4 / 5.0 * PI;
+            // float angle2 = (int)(curStarPoint + 1) * 4 / 5.0 * PI;
+            float r = 25;
+            float x1 = 200 + r * cosf(angle);
+            float y1 = 0 + r * sinf(angle);
+            (*point_p)[i].x = x1;
+            (*point_p)[i].y = y1;
+            (*point_p)[i].z = i;
+        }
     }
+
     writeData(buff, 61);
 }
 qint64 SerialManager::writeData(const char *data, qint64 len)
