@@ -1,7 +1,9 @@
 #include <QDebug>
+#include <QTimer>
 #include "SerialManager.h"
 #include "pa_CommonLibOnOS/DataConv/DataConv.h"
 #include "QmlCommunicator/QmlCom_SerialPart/QmlCom_SerialPart.h"
+#include "PathBuilder/PathBuilder.h"
 
 SerialManager SerialManager::instance;
 
@@ -85,18 +87,58 @@ void SerialManager::disconnectDevice()
 void SerialManager::switchMotor(bool state)
 {
     char buff[20];
-    if (state)
+    if (state) //启动
     {
         buff[0] = 0x21;
+        writeData(buff, 1);
+        QTimer::singleShot(500, this, SLOT(sendNextPointSet()));
     }
     else
     {
         buff[0] = 0x22;
+        writeData(buff, 1);
     }
-
-    writeData(buff, 1);
 }
+// typedef struct
+// {
+//     char cmd;
+//     PathPointStruct3D arr[5];
 
+//     /* data */
+// } PointSetCmd;
+
+// typedef union
+// {
+//     struct
+//     {
+//         char cmd;
+//         PathPointStruct3D arr[5];
+
+//         /* data */
+//     } structForm;
+//     char charArrForm[61];
+// } PointSetCmd;
+
+void SerialManager::sendNextPointSet()
+{
+    // PointSetCmd psc;
+    // sizeof(psc);
+    // psc.cmd = 0x23;
+    char buff[61];
+    buff[0] = 0x23;
+    // memcpy()
+    PathPointStruct3D(*point_p)[5];
+    point_p = (PathPointStruct3D(*)[5])(buff + 1);
+    // PathPointStruct3D **pointArr = (PathPointStruct3D **)(buff + 1);
+    // // PathPointStruct3D point3DArr[5];
+    for (int i = 0; i < 5; i++)
+    {
+        (*point_p)[i].x = i;
+        (*point_p)[i].y = i;
+        (*point_p)[i].z = i;
+    }
+    writeData(buff, 61);
+}
 qint64 SerialManager::writeData(const char *data, qint64 len)
 {
     if (slaveState == SlaveState::FoundAndConnect)

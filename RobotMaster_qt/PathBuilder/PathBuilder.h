@@ -21,6 +21,13 @@ typedef struct
     float minSectionLen;
 } ArmDescription;
 
+typedef struct
+{
+    float x;
+    float y;
+    float z;
+} PathPointStruct3D;
+
 class PathBuilder
 {
 public:

@@ -27,11 +27,13 @@ private:
     qint64 writeData(const char *data, qint64 len);
     QSerialPort *qSerialPort;
     void onDeviceFound(const QString &portName);
+
     SlaveState slaveState;
     // QString portName;
     // bool deviceFound = false;
     // void onError();
 public slots:
+    void sendNextPointSet();
     void onError(QSerialPort::SerialPortError serialPortError);
 };
 
