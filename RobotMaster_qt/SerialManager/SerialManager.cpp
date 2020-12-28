@@ -19,8 +19,32 @@ void SerialManager::init()
     slaveState = SlaveState::NotFound;
     // connect(&qSerialPort, &QSerialPort::error, this, &SerialManager::onError);
     connect(qSerialPort, SIGNAL(error(QSerialPort::SerialPortError)), this, SLOT(onError(QSerialPort::SerialPortError)));
-
+    connect(qSerialPort, SIGNAL(readyRead()), this, SLOT(receiveInfo()));
     lookForDevice();
+}
+void SerialManager::receiveInfo()
+{
+    QByteArray info = qSerialPort->readAll();
+    qDebug() << "info received: " << info;
+    switch (info[0])
+    {
+    case 0x24:
+        sendNextPointSet();
+        break;
+
+    default:
+        break;
+    }
+    // QByteArray hexData = info.toHex();
+    // //这里面的协议 你们自己定义就行  单片机发什么 代表什么 我们这里简单模拟一下
+    // if (hexData == "0x10000")
+    // {
+    //     //do something
+    // }
+    // else if (hexData == "0x100001")
+    // {
+    //     //do something
+    // }
 }
 
 void SerialManager::setSlaveState(SlaveState slaveState1)
@@ -91,7 +115,7 @@ void SerialManager::switchMotor(bool state)
     {
         buff[0] = 0x21;
         writeData(buff, 1);
-        QTimer::singleShot(500, this, SLOT(sendNextPointSet()));
+        // QTimer::singleShot(500, this, SLOT(sendNextPointSet()));
     }
     else
     {

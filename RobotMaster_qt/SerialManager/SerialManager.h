@@ -35,6 +35,7 @@ private:
 public slots:
     void sendNextPointSet();
     void onError(QSerialPort::SerialPortError serialPortError);
+    void receiveInfo();
 };
 
 #endif // __SERIALMANAGER_H__
