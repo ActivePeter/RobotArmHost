@@ -2,6 +2,7 @@
 #define __SERIALMANAGER_H__
 #include "QSerialPort"     //串口访问
 #include "QSerialPortInfo" //串口端口信息访问
+#include "PathBuilder/PathBuilder.h"
 
 class SerialManager : public QObject
 {
@@ -22,12 +23,13 @@ public:
     void connectDevice();
     void disconnectDevice();
     void switchMotor(bool state);
+    int pointReadStep = 0;
 
 private:
     qint64 writeData(const char *data, qint64 len);
     QSerialPort *qSerialPort;
     void onDeviceFound(const QString &portName);
-
+    bool getNextPoint(PathPointStruct3D &point);
     SlaveState slaveState;
     // QString portName;
     // bool deviceFound = false;

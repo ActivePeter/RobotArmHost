@@ -11,6 +11,7 @@ public:
     Q_INVOKABLE void transmitImagePath(QString qstring);
     virtual void paint(QPainter *painter);
     PathBuilder &pathBuilder = PathBuilder::instance;
+    static PathPainter *instance;
 };
 
 #endif // __PATHPAINTER_H__

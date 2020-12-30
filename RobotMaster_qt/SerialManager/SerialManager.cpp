@@ -4,6 +4,7 @@
 #include "pa_CommonLibOnOS/DataConv/DataConv.h"
 #include "QmlCommunicator/QmlCom_SerialPart/QmlCom_SerialPart.h"
 #include "PathBuilder/PathBuilder.h"
+#include "PathPainter/PathPainter.h"
 #include "qmath.h"
 SerialManager SerialManager::instance;
 
@@ -115,6 +116,7 @@ void SerialManager::switchMotor(bool state)
     {
         buff[0] = 0x21;
         writeData(buff, 1);
+        pointReadStep = 0;
         // QTimer::singleShot(500, this, SLOT(sendNextPointSet()));
     }
     else
@@ -157,11 +159,13 @@ void SerialManager::sendNextPointSet()
     point_p = (PathPointStruct3D(*)[5])(buff + 1);
     // PathPointStruct3D **pointArr = (PathPointStruct3D **)(buff + 1);
     // // PathPointStruct3D point3DArr[5];
+    bool sendAble = false;
     {
         // static char curStarPoint = 0;
 
         // float x2 = 200 + r * cosf(angle2);
         // float y2 = 0 + r * sinf(angle2);
+
         for (int i = 0; i < 5; i++)
         {
 
@@ -171,14 +175,64 @@ void SerialManager::sendNextPointSet()
             float r = 25;
             float x1 = 200 + r * cosf(angle);
             float y1 = 0 + r * sinf(angle);
-            (*point_p)[i].x = x1;
-            (*point_p)[i].y = y1;
-            (*point_p)[i].z = i;
+            // (*point_p)[i].x = x1 * 1.2;
+            // (*point_p)[i].y = 0;
+            // (*point_p)[i].z = y1;
+            sendAble = getNextPoint((*point_p)[i]);
+        }
+    }
+    if (sendAble)
+    {
+        // PathPainter::
+
+        if (PathPainter::instance)
+        {
+            PathPainter::instance->update();
+        }
+        writeData(buff, 61);
+    }
+}
+
+bool SerialManager::getNextPoint(PathPointStruct3D &point)
+{
+    // { //test distance
+    //     static int step = 0;
+    //     point.y = 0;
+    //     point.x = 170 + (step / 2) * 10;
+    //     point.z = (step % 2) * 20;
+    //     step++;
+    //     step %= 8;
+    // }
+    {
+        // static
+        vector<PathPointStruct> &pointsVector = PathBuilder::instance.pathPointsVector;
+        if (pointReadStep < (pointsVector.size() - 1) * 2)
+        {
+            if (pointReadStep % 2 == 0)
+            {
+                point.x = 170 + pointsVector[pointReadStep / 2].x / 2;
+                point.z = 0 + pointsVector[pointReadStep / 2].y / 2;
+            }
+            else
+            {
+                point.x = 170 + pointsVector[pointReadStep / 2 + 1].x / 2;
+                point.z = 0 + pointsVector[pointReadStep / 2 + 1].y / 2;
+            }
+            if (pointsVector[pointReadStep / 2].putDown)
+            {
+                point.y = 0;
+            }
+            else
+            {
+                point.y = 3;
+            }
+            pointReadStep++;
         }
     }
 
-    writeData(buff, 61);
+    // int
 }
+
 qint64 SerialManager::writeData(const char *data, qint64 len)
 {
     if (slaveState == SlaveState::FoundAndConnect)

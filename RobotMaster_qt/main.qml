@@ -31,7 +31,7 @@ Window {
         serialFoundStateText.text=qsTr("未检测到");
         connectSlaveBtn.text=qsTr("重新扫描");
         connectSlaveBtn.enabled=true;
-        motorSwitch.enabled=true;
+        motorSwitch.enabled=false;
     }
     Column {
         id: column

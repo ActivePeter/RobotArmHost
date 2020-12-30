@@ -44,6 +44,7 @@ void PathBuilder::recalcPointVector(cv::Mat &mat)
     int addedPointCnt = 0;
     qDebug() << ("pathPointVectorLen!") << pathPointVectorLen;
     float curXLen = minSectionXLen;
+    float lastX = 0, lastY = 0;
     for (;;)
     {
         //        float curXLen = minSectionXLen + armDesc.penWidth * (curStepCnt);
@@ -102,25 +103,48 @@ void PathBuilder::recalcPointVector(cv::Mat &mat)
             //     x = a;
             // }
             // convertPosFromLeftUpToArmPos(y, x);
-            pathPointsVector[addedPointCnt].x = x;
-            pathPointsVector[addedPointCnt].y = y;
+            // pathPointsVector[addedPointCnt].x = x;
+            // pathPointsVector[addedPointCnt].y = y;
 
             if (i > 0)
             {
                 int grayLevel = getLineGrayLevel(
-                    pathPointsVector[addedPointCnt].x,
-                    pathPointsVector[addedPointCnt].y,
-                    pathPointsVector[addedPointCnt - 1].x,
-                    pathPointsVector[addedPointCnt - 1].y,
-                    mat);
-                pathPointsVector[addedPointCnt - 1].putDown = (char)getPutdownByGrayLevel(grayLevel, curStepCnt);
+                    // pathPointsVector[addedPointCnt].x,
+                    // pathPointsVector[addedPointCnt].y,
+                    x, y,
+                    // pathPointsVector[addedPointCnt - 1].x,
+                    // pathPointsVector[addedPointCnt - 1].y,
+                    lastX, lastY, mat);
+                char putDown = (char)getPutdownByGrayLevel(grayLevel, curStepCnt);
+                if (pathPointsVector[addedPointCnt - 1].putDown != putDown)
+                {
+                    pathPointsVector[addedPointCnt].putDown = putDown;
+                    pathPointsVector[addedPointCnt].x = x;
+                    pathPointsVector[addedPointCnt].y = y;
+                    addedPointCnt++;
+                }
+                else if (i == onePathPointCnt - 1)
+                {
+                    pathPointsVector[addedPointCnt].putDown = putDown;
+                    pathPointsVector[addedPointCnt].x = x;
+                    pathPointsVector[addedPointCnt].y = y;
+                    addedPointCnt++;
+                }
             }
-            addedPointCnt++;
+            else
+            {
+                pathPointsVector[addedPointCnt].x = x;
+                pathPointsVector[addedPointCnt].y = y;
+                addedPointCnt++;
+            }
+            lastX = x;
+            lastY = y;
         }
         //        curXLen+= 1.0f;
         curXLen += armDesc.penWidth;
         curStepCnt++;
     }
+    pathPointsVector.resize(addedPointCnt);
     //    qDebug()<<("curStepCnt!")<<curStepCnt;
 }
 
