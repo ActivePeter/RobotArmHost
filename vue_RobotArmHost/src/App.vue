@@ -6,7 +6,6 @@
     <el-container class="main">
       <el-aside id="side1" width="200px">
         <el-input v-model="mqtthost" placeholder="mqtt server"></el-input>
-        <el-input v-model="mqttport" placeholder="mqtt port"></el-input>
         <el-input v-model="mqttuser" placeholder="user"></el-input>
         <el-input
           v-model="mqttpw"
@@ -125,7 +124,7 @@ export default {
       radio: "1",
       connection: {
         host: "192.168.31.132",
-        port: 8083,
+        port: 8084,
         // endpoint: "/mqtt",
         clean: true, // 保留会话
         connectTimeout: 4000, // 超时时间
@@ -441,7 +440,7 @@ export default {
       if (!this.connected) {
         const { host, port, ...options } = this.connection;
         console.log(host, port);
-        const connectUrl = `ws://${this.mqtthost}:${this.mqttport}/mqtt`;
+        const connectUrl = `wss://${this.mqtthost}/mqtt`;
         options.username = this.mqttuser;
         options.password = this.mqttpw;
         try {
